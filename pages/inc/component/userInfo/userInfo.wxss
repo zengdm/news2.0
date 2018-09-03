@@ -1,0 +1,41 @@
+/* pages/inc/component/userInfo/userInfo.wxss */
+
+.userBox {
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 111112;
+  /* overflow: hidden; */
+}
+
+.btnBox {
+  width: 100%;
+  background: #fff;
+  overflow:hidden;
+  position:fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 111120;
+}
+
+.btnBox-btn {
+  /* width: 100%; */
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: right;
+  margin: 30rpx;
+  border-radius: 10rpx;
+  padding-right: 210rpx;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 36rpx;
+  background: #09bb07 url(http://i1.dd-img.com/assets/image/1528253107-80424eb8b050e81f-44w-44h.png) no-repeat 210rpx 24rpx;
+  background-size: 44rpx;
+}
+
+

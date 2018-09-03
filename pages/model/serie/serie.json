@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "user-btn": "/pages/inc/component/userInfo/userInfo",
+        "login-tips": "/pages/inc/component/login/login"
+    }
+}

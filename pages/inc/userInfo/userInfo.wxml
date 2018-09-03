@@ -1,0 +1,3 @@
+<!--pages/inc/userInfo/userInfo.wxml-->
+
+ <button bindgetuserinfo='sheTwo' open-type='getUserInfo'>去设置2</button> 

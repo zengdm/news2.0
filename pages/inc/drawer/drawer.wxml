@@ -1,0 +1,35 @@
+<template name="drawer">
+
+  <!--遮罩 S-->
+   <view class="drawer-mask" bindtap="hideDrawer" wx:if="{{showDrawerFlag}}" catchtouchmove></view> 
+  <!--遮罩 E-->
+  <!--抽屉内容 S-->
+  <scroll-view animation="{{animationDrawer}}" class="drawer-box" scroll-y="true">
+    <!-- <scroll-view class="drawer-content" scroll-y="true"> -->
+     
+      <view class="drawer-content-item">
+         <text>{{drawerSeriesData.pp_name}}</text>
+        <view wx:for="{{drawerSeriesData.list}}" class="drawer-child" bindtap="gotoSeries" data-pinyin="{{item.cx_pinyin}}" data-cityval="{{cityIdData}}" data-pserid="{{item.cxid}}" wx:if="{{item.product_status==1||item.product_status==3}}">
+          <image class="img-drawer" src="{{item.focus}}"></image>
+          <view class="drawer-info">
+            <text>{{item.cx_name}}</text>
+            <view class="price-color" wx:if="{{item.product_status==1}}">
+              <block wx:if="{{item.min_guide_price!=item.max_guide_price}}">指导价
+                <text class="drawer-price">{{item.min_guide_price}}-{{item.max_guide_price}}万</text>
+              </block>
+              <block wx:elif="{{item.min_guide_price==item.max_guide_price}}">指导价
+                <text class="drawer-price">{{item.min_guide_price}}万</text>
+              </block>
+
+            </view>
+             <view class="price-color" wx:elif="{{item.product_status==3}}">
+              <text class='price-no'>未上市</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    <!-- </scroll-view> -->
+  </scroll-view>
+  
+
+</template>

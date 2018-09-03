@@ -1,0 +1,73 @@
+<!--search.wxml-->
+<!-- 搜索结果页 -->
+<view class="container">
+    <view class='nav-tab-bg'></view>
+    <view class='nav-tab-cont'>
+        <!--搜索框 S-->
+        <view class="search-view">
+            <form class="search-form" bindsubmit="formSubmit">
+                <input type="text" class="search-input" placeholder="搜索" bindfocus="" bindinput="changeValue" value="{{keyWord}}" auto-focus="false" name="getValue" />
+                <icon class="search-icon" type="search" size="15" color="#b2b2b2"></icon>
+                <icon class="clear-icon" type="clear" size="16" bindtap="clear" color="#d2d2d2"></icon>
+                <button class="cancel" formType="submit">搜索</button>
+                <!-- bindtap="searchClick" -->
+            </form>
+        </view>
+        <view class='nav-tab'>
+            <text class="text-off {{searchids == 0 ? 'text-on' : ''}}" data-current='0' data-typeid='all' bindtap='switchNav'>全部</text>
+            <text class="text-off {{searchids == 1 ? 'text-on' : ''}}" data-current='1' data-typeid='car' bindtap='switchNav'>车系</text>
+            <text class="text-off {{searchids == 2 ? 'text-on' : ''}}" data-current='2' data-typeid='article' bindtap='switchNav'>文章</text>
+        </view>
+
+    </view>
+    
+    <scroll-view class="swiper-content" scroll-y="{{scrollBoolean}}" enable-back-to-top='true' style="height:{{winHeight-46}}px" bindscroll="scroll">
+
+    </scroll-view>
+    <!--搜索框 E-->
+    <!-- <view wx:if="{{!searchdetail}}">
+        <view class='notsearch_txt'>正在搜索中</view>
+    </view> -->
+    <!-- <view class='notsearch' wx:if="{{cardetail.length==0}}">
+        <view class='notsearch_img'>
+            <image mode='widthFix' src='http://i1.dd-img.com/assets/image/1529660363-fe500edb47877642-330w-330h.png'></image>
+        </view>
+        <view class='notsearch_txt'>什么都没有找到，换个内容在搜索试试</view>
+    </view> -->
+    <!-- <block wx:else> -->
+
+    <!--车型列表 S-->
+    <!-- <view class="drawer-content-item" wx:if="{{cardetail.length!=0}}">
+            <view class='detail_title'>相关车系</view>
+            <view class="drawer-child" wx:for="{{cardetail}}" bindtap="carDetails" data-pinyin="{{item.cx_pinyin}}" data-cxid="{{item.cxid}}">
+                <image class="img img-model" src="{{item.size_focus}}"></image>
+                <view class="drawer-info">
+                    <text>{{item.cx_name}}</text>
+                    <view>
+                        <block wx:if="{{item.min_actual_price!=item.max_actual_price}}">
+                            <text class="drawer-pricecc"> 补贴后</text>
+                            <text class="drawer-price">￥{{item.min_actual_price}}-{{item.max_actual_price}}万</text>
+                        </block>
+                        <block wx:elif="{{item.min_actual_price==item.max_actual_price}}">
+                            <block wx:if="{{item.min_actual_price==0}}">
+                                <text class="drawer-pricehui"> 暂无报价</text>
+                            </block>
+                            <block wx:else>
+                                <text class="drawer-pricecc"> 补贴后</text>
+                                <text class="drawer-price">￥{{item.min_actual_price}}万</text>
+                            </block>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view> -->
+    <!--车型列表 E-->
+    <!-- 文章列表 S -->
+    <!-- <view class="drawer-content-item" wx:if="{{tlist.list.length!=0}}">
+                <view class='detail_title'>相关文章</view>
+                <component-forum-list tlist="{{tlist}}"></component-forum-list>
+                <view class='nomorelist' wx:if="{{nomorelist == 0}}">没有更多文章了~</view>
+            </view> -->
+    <!-- 文章列表 E -->
+    <!-- </block> -->
+</view>

@@ -1,0 +1,12 @@
+<template name="title-img">
+  <view class="little-one" data-sourceid="{{item.sourceid}}" data-platid="{{item.platid}}" data-ctype="{{item.ctype}}" data-url="{{item.url_h5}}" bindtap='itemClick'>
+
+    <view class="little-one-text">
+      <view class="stream-item-title" wx:if="{{item.title}}">{{item.title}}</view>
+      <view class="stream-item-info">{{item.source.name}} {{item.showTime}}</view>
+    </view>
+    <view class="little-one-photo">
+      <image src="{{item.imgs[0].imgurl}}" mode='widthFix'></image>
+    </view>
+  </view>
+</template>

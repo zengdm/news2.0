@@ -1,0 +1,7 @@
+<!--tabBar/community/community.wxml-->
+<!--pages/forum/index/index.wxml-->
+<view>
+    <!-- feed流列表 tlist:帖子列表  goIndex:底部菜单是否显示返回首页 -->
+    <component-forum-list wx:if="{{typeof(forumList[defaultNav.path])!='undefined' && (!floading || forumList[defaultNav.path]['list'].length>0)}}" index="{{defaultNav.path}}" tlist="{{forumList[defaultNav.path]}}" loginInfo="{{loginInfo}}" goIndex="" points="{{points}}"></component-forum-list>
+    <!-- <component-publish-btn></component-publish-btn> -->
+</view>

@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "component-forum-list": "/pages/inc/component/forum/forum-list/forum-list",
+        "user-btn": "/pages/inc/component/userInfo/userInfo"
+    },
+    "navigationBarTitleText": "我的收藏"
+}

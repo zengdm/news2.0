@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "个人中心",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "user-head": "/pages/inc/component/user/user-head/user-head",
+    "login-tips": "/pages/inc/component/login/login",
+    "user-btn": "/pages/inc/component/userInfo/userInfo"
+  }
+}

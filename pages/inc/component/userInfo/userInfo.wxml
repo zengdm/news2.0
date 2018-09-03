@@ -1,0 +1,9 @@
+<!--pages/inc/component/userInfo/userInfo.wxml-->
+
+ <view  hidden='{{!show}}' catchtouchmove="catchtouchmove">
+ <view class='userBox' bindtap='hideUser'></view>
+  <view class='btnBox'>
+    <button class='btnBox-btn' bindgetuserinfo='bindgetuserinfo' open-type='getUserInfo'>微信快速登录</button>
+  </view>
+
+</view>

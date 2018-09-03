@@ -1,0 +1,86 @@
+.search-view {
+    padding: 14rpx 0 0 14rpx;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    /* border-bottom: 1rpx solid #e5e5e5; *//*float: left;*/
+}
+
+.search-view:after {
+    content: '';
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    display: block;
+}
+
+.search-input {
+    position: relative;
+    display: inline-block;
+    width: 640rpx;
+    height: 56rpx;
+    background: #f4f4f4;
+    font-size: 24rpx;
+    border-radius: 28rpx;
+    color: #000;
+    padding-left: 55rpx;
+    box-sizing: border-box;
+    border: 1rpx solid #ededef;
+}
+
+.search-icon {
+    position: absolute;
+    left: 38rpx;
+    top: 30rpx;
+    z-index: 1000;
+}
+
+.section_title {
+    font-size: 28rpx;
+    color: #999;
+    text-align: left;
+    /* margin-left: 30rpx; */
+    margin: 30rpx;
+}
+.section_title_history{
+    font-size:28rpx;
+color:#999;
+text-align:left;
+padding:30rpx 0;
+margin:0 30rpx;
+border-bottom: 1rpx solid #fbfbfb;
+}
+.historytaglist{
+    height:80rpx;
+    line-height: 80rpx;
+    color: #333;
+    border-bottom: 1rpx solid #fbfbfb;
+}
+.historytag{
+    margin:0 30rpx;
+}
+.search-view-search {
+    font-size: 24rpx;
+    color: #39f;
+    line-height: 56rpx;
+    padding-left: 26rpx;
+}
+
+.tag {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    margin: 0 30rpx;
+}
+
+.tag .tag-box {
+    /* width: 226rpx; */
+    height: 56rpx;
+    padding: 0 20rpx;
+    line-height: 56rpx;
+    text-align: center;
+    border-radius: 36rpx;
+    display: inline-block;
+    color: #151515;
+    font-size: 24rpx;
+    border: 1rpx solid #d7d7d7;
+    margin: 0 4rpx 28rpx 14rpx;
+}

@@ -1,0 +1,57 @@
+<!--pages/user/follow/follow.wxml-->
+<view class='main'>
+    <!-- <view class='header'> -->
+    <!-- <text bindtap='onTab' data-current='0'>好友</text> -->
+    <!-- <text class="{{globalData.showTab ? 'border' : ''}}" bindtap='onTab' data-current='0'>好友</text> -->
+    <!-- <text class="{{globalData.showTab ? '' : 'border'}}" bindtap='onTab' data-current='1'>话题</text> -->
+    <!-- </view> -->
+    <!-- <view class="{{globalData.showTab ? '' : 'none' }}"> -->
+    <view>
+        <view class='item' wx:if="{{globalData.isfollowList}}" >
+            <view class='item-box'>
+                <view class='item-info-state'>
+                    <view class='item-info-left'>我是本次的评论内容</view>
+                    <view class='item-info-right'>2018年7月8日</view>
+                </view>
+                <view class="item-info-count">
+                    <text>评论主题"</text> 
+                    <view class=''>为什么说纯电动汽车无线充电之路任重而道远？</view> 
+                    <text>"</text>
+                </view>
+            </view>
+             <view class='item-box'>
+                <view class='item-info-state'>
+                    <view class='item-info-left'>我是本次的评论内容我是本次的评论内容</view>
+                    <view class='item-info-right'>2018年7月8日</view>
+                </view>
+                <view class="item-info-count">
+                    <text>评论主题"</text> 
+                    <view class=''>为什么说纯电动汽车无线充电之路任重而道远？</view> 
+                    <text>"</text>
+                </view>
+            </view>
+        </view>
+        <view class='collectnot' wx:if="{{!globalData.isfollowList}}">
+            <text>这里已经空空如也</text>
+            <text>“多去评论更美好…”</text>
+        </view>
+    </view>
+    <!-- <view class="{{globalData.showTab ? 'none' : '' }}">
+        <view wx:if="{{globalData.istagsList}}" class='item' wx:for="{{globalData.tagsList}}">
+            <view class='item-box'>
+                <view class='item-box-img item-topic-img'>
+                    <image src='{{item.tag_img_url}}'></image>
+                </view>
+                <view class='item-box-info'>
+                    <text>#{{item.tag_name}}#</text>
+                    <view>{{item.tag_summary}}</view>
+                </view>
+                <view class="item-box-state" data-nodeindex='{{index}}' data-tagid='{{item.tag_id}}' bindtap='removetagfollow'>取消关注</view>
+            </view>
+        </view>
+        <view class='collectnot' wx:if="{{!globalData.istagsList}}">
+            <text>这里已经空空如也</text>
+            <text>“关注更美好…”</text>
+        </view>
+    </view> -->
+</view>

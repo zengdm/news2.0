@@ -1,0 +1,152 @@
+<user-btn show="{{userShow}}"></user-btn>
+<view hidden='{{loadShow}}'>
+  <view class="{{replyList.length == 0?'pagehui':'pagebai'}}">
+    <!--内容详情-->
+    <view bindtap='hideCard' style='background: #fff;'>
+      <import src="block/article.wxml" />
+      <import src="block/dynamic.wxml" />
+      <template is="{{args.ctype=='long'?'article':args.ctype}}" data="{{detailData,isfollow,isdigest,articleData}}"></template>
+    </view>
+    <view class='comment' id="replylist">
+      <!-- <view class='comment-empty'></view> -->
+      <view class='comment-header'>
+        <view class='comment-header-new'>
+          最新评论
+          <block wx:if="{{total > 0}}">
+            <text>{{total}}</text>
+          </block>
+          <!-- <block wx:if="{{detailData.points.replies > 0}}">
+                        <text>{{detailData.points.replies}}</text>
+                    </block> -->
+        </view>
+        <view class='comment-header-praise'>
+          赞
+          <block wx:if="{{detailData.points.parise > 0}}">
+            <text>{{detailData.points.parise}}</text>
+          </block>
+        </view>
+      </view>
+      <view class='comment-no' wx:if="{{replyList.length == 0}}">
+        <view class='comment-no-box'>暂无评论</view>
+      </view>
+      <view class='comment-section' wx:else>
+        <!-- <view class='comment-section'> -->
+        <view class='comment-section-item' wx:for="{{replyList}}">
+          <view class='comment-section-item-img'>
+            <image mode='aspectFill' src='{{item.avatar}}'></image>
+          </view>
+          <view class='comment-section-item-info'>
+            <view class='comment-section-item-info-author'>
+              <view>{{item.author}}</view>
+              <text>{{item.showTime}}</text>
+            </view>
+            <view class='comment-section-item-info-intro'>{{item.content}}</view>
+            <view class='comment-section-item-info-other'>
+              <!-- 回复 -->
+              <view class='comment-section-item-info-other-btn' bindtap='textBind' data-replyid='{{item.replyid}}' data-puid='{{item.authorid}}' data-author='{{item.author}}' data-replyindex='{{index}}'>
+                <image mode='widthFix' src='http://i1.dd-img.com/assets/image/1514366671-24402078ac865c42-28w-28h.png'></image>
+                <!-- <image src='http://i1.dd-img.com/assets/image/1514366671-169c0463ff119344-28w-28h.png'></image> -->
+                <text>回复</text>
+              </view>
+              <!-- 赞 -->
+              <!-- <view class='comment-section-item-info-other-btn' data-rid='{{item.rid}}' data-index="{{index}}" bindtap='userAgree' data-puid='{{item.authorid}}' data-replyid='{{item.replyid}}'>
+                                <image mode='widthFix' wx:if="{{!userPraise}}" src='http://i1.dd-img.com/assets/image/1514366671-e518604aece5f260-28w-28h.png'></image>
+                                <image mode='widthFix' wx:else src='http://i1.dd-img.com/assets/image/1514366672-afa1ede0e1647234-28w-28h.png'></image>
+                                <text wx:if="{{item.supports == 0}}">赞</text>
+                                <text wx:else>{{item.supports}}</text>
+                            </view>  -->
+              <view class='comment-section-item-info-other-btn' data-replyid='{{item.replyid}}' data-index="{{index}}" data-puid='{{item.authorid}}' bindtap='userAgree' wx:if="{{!item.showAgree}}">
+                <image mode='widthFix' src='http://i1.dd-img.com/assets/image/1514366671-e518604aece5f260-28w-28h.png'></image>
+                <text wx:if="{{item.supports == 0}}">赞</text>
+                <text wx:else>{{item.supports}}</text>
+              </view>
+              <view class='comment-section-item-info-other-btn' data-replyid='{{item.replyid}}' data-index="{{index}}" data-puid='{{item.authorid}}' wx:else>
+                <image mode='widthFix' src='http://i1.dd-img.com/assets/image/1514366672-afa1ede0e1647234-28w-28h.png'></image>
+                <text wx:if="{{item.supports == 0}}">赞</text>
+                <text wx:else>{{item.supports}}</text>
+              </view>
+            </view>
+            <view class='comment-section-item-info-reply' wx:if="{{item.reply}}">
+              <!-- 回复的回复 -->
+              <view class='comment-section-item-info-reply-item' wx:for="{{item.reply}}" wx:for-item="itemName">
+                <block wx:if="{{itemName.reply_author}}">
+                  <view bindtap='textBind' data-puid='{{itemName.authorid}}' data-author='{{itemName.author}}' data-replyid='{{item.replyid}}' data-replyindex='{{index}}'>
+                    <text>{{itemName.author}} </text>回复
+                    <text>{{itemName.reply_author}}</text>：{{itemName.content}}</view>
+                </block>
+                <block wx:else>
+                  <view bindtap='textBind' data-puid='{{itemName.authorid}}' data-author='{{itemName.author}}' data-replyid='{{item.replyid}}' data-replyindex='{{index}}'>
+                    <text class='comment-section-item-info-reply-item-name'>{{itemName.author}}</text>：{{itemName.content}}</view>
+                </block>
+              </view>
+              <view data-replyindex='{{index}}' hidden='{{item.showReply}}' bindtap='replycount'>查看全部回复 ></view>
+            </view>
+          </view>
+        </view>
+        <view class='nomorelist' wx:if="{{nomorelist == 0}}">已经全部看完啦</view>
+      </view>
+    </view>
+    <!-- 底部组件 -->
+    <!-- <detail-reply></detail-reply> -->
+    <view class='footer'>
+      <!-- <view class='footer-empty'></view> -->
+      <form bindsubmit="formSubmit" bindreset="formReset">
+        <view class='footer-intro' hidden='{{showCollet}}'>
+          <text bindtap='textBind'>我也说两句...</text>
+          <view class='footer-intro-img'>
+            <view class='dotagree'>
+              <image wx:if="{{!ispraise}}" bindtap='onPraise' mode='widthFix' src='http://i1.dd-img.com/assets/image/1525430192-a57790c3b0974523-40w-40h.png'></image>
+              <image mode='widthFix' wx:else src='http://i1.dd-img.com/assets/image/1525430192-d3ecbae9dc061925-40w-40h.png'></image>
+              <block wx:if="{{detailData.points.parise > 0}}">
+                {{detailData.points.parise}}
+              </block>
+            </view>
+            <image style='margin-right:49rpx;margin-left:20rpx;' wx:if="{{!onfavorite}}" bindtap='favorite' mode='widthFix' src='http://i1.dd-img.com/assets/image/1525430193-311f471fcac8341b-40w-40h.png'></image>
+            <image wx:else style='margin-right:49rpx;margin-left:20rpx;' mode='widthFix' bindtap='removeFavorite' src='http://i1.dd-img.com/assets/image/1525430193-0f9582cc33b408e3-40w-40h.png'></image>
+            <button class='onshare' open-type='share'>
+              <!-- margin-right:40rpx;margin-left:40rpx;margin-bottom:0 -->
+              <image style='' mode='widthFix' src='http://i1.dd-img.com/assets/image/1525430192-088868777dda6636-40w-40h.png'></image>
+            </button>
+
+
+            <!-- <view bindtap='card' hover-class="dotbg" class="dot">
+            <image mode='widthFix' style=' margin: 0 16rpx;' src='http://i1.dd-img.com/assets/image/1514369527-83f87ac32eb3270c-28w-28h.png'></image>
+          </view> -->
+          </view>
+        </view>
+        <view class='write_commit' hidden='{{commentShow}}'>
+          <view class='write_commit_txt'>
+            <view class='write_commit_txt_title'>回复 : {{replyAuthor}}
+              <image class='write_commit_close' src='http://i1.dd-img.com/assets/image/1511257148-05e45f23897155b3-40w-40h.png' bindtap='infoMain' mode='widthFix'></image>
+            </view>
+            <textarea class='info_textarea' maxlength='-1' focus="{{focus}}" bindinput='bindinput' show-confirm-bar="{{false}}" name="input" placeholder="请输入评论内容" placeholder-style="color:#999999;" fixed='true' value="{{name}}" />
+          </view>
+          <view class='write_commit_button'>
+            <!-- <button class="btn-area" formType="submit">发 送</button> -->
+            <button wx:if="{{sending}}" class="{{btnColor ? '' : 'btn-color'}}" loading="{{btnColor&&sending?true:false}}">{{sendName?sendName:'发 送'}}</button>
+            <button wx:else class="{{btnColor ? '' : 'btn-color'}}" formType="submit" loading="{{btnColor&&sending?true:false}}">{{sendName?sendName:'发 送'}}</button>
+
+          </view>
+        </view>
+      </form>
+      <!-- <view class='page_background' hidden='{{cardPage}}' bindtap='removebackground'></view> -->
+      <!-- <view class='footer-card' hidden='{{cardPage}}'>
+      <view class='footer-card-item' wx:if="{{isfollow == 1}}" data-followid='{{detailData.authorid}}' bindtap='removefollow'>取消关注</view>
+      <view class='footer-card-item' wx:if="{{onfavorite}}" bindtap='removeFavorite'>取消收藏</view>
+      <view class='footer-card-item' bindtap="adddigest" wx:if="{{isdigest == 0}}">推荐精华</view>
+      <view class='footer-card-item' bindtap="removedigest" wx:if="{{isdigest == 1}}">取消精华</view>
+      <view class='footer-card-item' bindtap="goIndex">回到首页</view>
+    </view> -->
+    </view>
+
+    <login-tips show="{{loginShow}}"></login-tips>
+
+    <!-- <view class='hint'>
+
+      <view>点击右下角菜单</view>
+
+      可以直接回首页哦~
+
+    </view> -->
+  </view>
+</view>

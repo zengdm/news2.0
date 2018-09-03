@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "搜索结果",
+  "usingComponents": {
+    "component-forum-list": "/pages/inc/component/forum/forum-list/forum-list"
+  }
+}

@@ -1,0 +1,23 @@
+<!--搜索框 S-->
+<view class="search-view">
+    <form class="search-form">
+        <icon class="search-icon" type="search" size="12" color="#9a9a9a"></icon>
+        <input type="text" class="search-input" value="" placeholder="请输入想查找的车型" bindfocus="" bindinput="keywordInput" auto-focus="true" name="keyword" />
+    </form>
+    <view class="search-view-search" bindtap="searchClick">搜索</view>
+</view>
+<!--搜索框 E-->
+
+<view class="section">
+    <!-- <view class='section_title'>热门搜索</view>
+    <view class="tag">
+        <view class="tag-box" wx:for="{{searchTag}}" wx:for-item="pure" data-keyword="{{pure}}" bindtap="searchTag">{{pure}}</view>
+    </view> -->
+    <block wx:if="{{getsearch.length>0}}">
+        <view class='section_title_history'>搜索历史</view>
+        <view class='historytag'>
+            <view class='historytaglist' wx:for="{{getsearch}}"  data-keyword="{{item}}" bindtap="searchTag">{{item}}</view>
+            <!-- <view class='historytaglist'>北汽</view> -->
+        </view>
+    </block>
+</view>

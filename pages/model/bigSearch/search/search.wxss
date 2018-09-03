@@ -1,0 +1,231 @@
+/**search.wxss**/
+
+/* 搜索框--S */
+
+.search-view {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx;
+    background: #fff;
+    /* border-bottom: 1rpx solid #e7e7e7; */
+    color: #fff;
+    /*float: left;*/
+}
+
+.notsearch_img {
+    width: 330rpx;
+    height: 330rpx;
+    margin: 0 auto;
+    margin-top: 144rpx;
+}
+
+.notsearch_img image {
+    width: 330rpx;
+}
+
+.notsearch_txt {
+    text-align: center;
+    line-height: 100rpx;
+    height: 100rpx;
+    font-size: 15px;
+    color: #666;
+}
+
+.search-view:after {
+    content: '';
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    display: block;
+}
+
+.search-form {
+    /*float: right;*/
+    width: 100%;
+    height: 54rpx;
+}
+
+.search-input {
+    position: relative;
+    display: inline-block;
+    width: 80%;
+    height: 100%;
+    color: #000;
+    border: 1rpx solid #ededef;
+    background: #fff;
+    font-size: 24rpx;
+    border-radius: 36rpx;
+    text-align: left;
+    padding-left: 60rpx;
+    background-color: #f4f4f4;
+}
+
+.drawer-pricehui {
+    font-size: 28rpx;
+    color: #ccc;
+}
+
+.drawer-pricecc {
+    font-size: 24rpx;
+    color: #999;
+}
+
+.search-icon {
+    position: absolute;
+    left: 5%;
+    top: 34rpx;
+    z-index: 1000;
+}
+
+.clear-icon {
+    position: absolute;
+    right: 15%;
+    top: 32rpx;
+    z-index: 2000;
+}
+
+.cancel {
+    float: right;
+    line-height: 54rpx;
+    color: #39f;
+    font-size: 24rpx;
+    margin-right: 0.6rpx;
+    padding: 0;
+    border: 1px solid #fff;
+    background: #fff;
+}
+
+button[disabled]:not([type]) {
+    background: none;
+}
+
+.nav-tab-bg {
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.nav-tab-cont {
+    clear: both;
+    overflow: hidden;
+    z-index: 11;
+    position: fixed;
+    top: 0;
+    background: #39f;
+    width: 100%;
+}
+
+.nav-tab {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    background: #fff;
+    height:80rpx;
+    padding: 0 20rpx;
+}
+
+.text-off {
+    display: block;
+    font-size: 28rpx;
+    height: 76rpx;
+    line-height: 80rpx;
+    text-align: center;
+    color: #999;
+    margin: 0 24rpx;
+    width: 72rpx;
+    /* font-weight: bold; */
+}
+
+.text-on {
+    color: #333;
+    border-bottom: 2rpx solid #333;
+}
+
+button::after {
+    border: none;
+    background: none;
+}
+
+/* 搜索框--E */
+
+/* 车型列表 S */
+
+.drawer-content-item > text {
+    display: block;
+    background: #eee;
+    color: #777;
+    font-size: 30rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    padding: 17rpx 32rpx;
+}
+
+::-webkit-scrollbar {
+    /*隐藏滚动条*/
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+.drawer-child {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 30rpx;
+    height: 139rpx;
+    padding: 20rpx 52rpx;
+    position: relative;
+    /* margin: 0 20rpx; */
+    border-bottom: solid 1rpx #eee;
+}
+
+.detail_title {
+    padding: 30rpx;
+    border-bottom: 1rpx solid #eee;
+    font-size: 14px;
+    color: #999;
+}
+
+/* .drawer-child:not(:last-child) {
+  border-bottom: solid 1rpx #eee;
+} */
+
+.drawer-info {
+    padding-left: 34rpx;
+}
+
+.drawer-info > text {
+    display: block;
+    padding-bottom: 20rpx;
+}
+
+.drawer-price {
+    color: #e74b3c;
+    padding-top: 20rpx;
+}
+
+.drawer-close {
+    position: absolute;
+    right: 20rpx;
+}
+
+.img-model {
+    width: 220rpx;
+    height: 147rpx;
+    border-radius: 0;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.img-brand {
+    width: 44rpx;
+    height: 44rpx;
+    position: absolute;
+    left: 20rpx;
+    top: 20rpx;
+    border-radius: 0;
+    display: inline-block;
+    overflow: hidden;
+}
+
+/* 车型列表 E */

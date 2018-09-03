@@ -1,0 +1,75 @@
+<template name="article">
+  <view class='elite' wx:if="{{isdigest == 1}}">
+    <image mode='widthFix' src='http://i1.dd-img.com/assets/image/1514342094-ccf5f9048c4a25f1-26w-26h.png'></image>
+    精华
+  </view>
+  <view class='banner'>
+    <!-- <view class='banner-img'>
+      <image mode='aspectFill' src='{{detailData.cover}}'></image>
+    </view> -->
+    <view class='banner-title'>{{detailData.title}}</view>
+  </view>
+  <view class='content'>
+    <view class='content-author'>
+      <block wx:if="{{detailData.reserved == 0}}"><image src='http://i1.dd-img.com/assets/image/1525675727-6208a172874c22d1-80w-32h.png'></image></block>
+      <text class='content-author-text' wx:if="{{detailData.source.name}}">来源:{{detailData.source.name}} </text>
+      <text class='content-author-text' wx:if="{{detailData.author && (detailData.source.name != detailData.author)}}"> 作者:{{detailData.author}} </text>
+      <text  class='content-author-text'>{{detailData.showTime}}</text>
+    </view>
+    <!-- <view class='content-sign'>
+      <text></text>
+      <image mode='widthFix' src='http://i1.dd-img.com/assets/image/1514374380-a244168a166fba52-60w-60h.png'></image>
+      <text></text>
+    </view> -->
+    <view class='content-preamble' wx:if="{{detailData.summary.length > 0}}">
+      <text>{{detailData.summary}}</text>
+    </view>
+
+      <block wx:if="{{detailData.ctype == 'article'}}">
+       <import src="../../../../wxParse/wxParse.wxml" />
+      <template is="wxParse" data="{{wxParseData:articleData.nodes}}" /> 
+    </block>
+
+    <block wx:else>
+      <block wx:for="{{detailData.content}}">
+        <text class='content-paragraph' wx:if="{{item.type == 'text'}}" decode="true">{{item.decode.alt}}</text>
+        <view class='content-img' wx:if="{{item.type == 'img'}}">
+          <image bindtap="previewImage" data-src="{{item.decode.src}}" mode='widthFix' src='{{item.decode.src}}'></image>
+          <view class='content-img-intro'>
+            <text>{{item.decode.alt}}</text> </view>
+        </view>
+      </block>
+
+    </block>  
+
+
+
+
+
+  </view>
+  <!--作者-->
+  <view wx:if="{{detailData.reserved == 0 && detailData.authorid > 0}}">
+    <view class='author-header'></view>
+    <view class='author-sign'>
+      <image mode='widthFix' src='http://i1.dd-img.com/assets/image/1514427840-9ba37d78f1c26483-26w-26h.png'></image>
+      作者
+    </view>
+    <view class='author-section'>
+
+      <view class='author-section-img' bindtap="_personal" data-id="{{detailData.authorid}}" data-author="{{detailData.author}}" data-avatar='{{detailData.avatar}}'>
+        <image mode='aspectFill' src='{{detailData.avatar}}'></image>
+      </view>
+      <view class='author-section-author'  bindtap="_personal" data-id="{{detailData.authorid}}" data-author="{{detailData.author}}" data-avatar='{{detailData.avatar}}'>
+        <text>{{detailData.author}}</text>
+        <view>{{detailData.self_desc}}</view>
+      </view>
+
+      <!-- <block wx:if="{{detailData.authorid > 0}}">
+        <view class='author-section-btn' wx:if="{{isfollow == 0}}" data-followid='{{detailData.authorid}}' bindtap='addfollow'>
+          <image mode='widthFix' src='http://i1.dd-img.com/assets/image/1514429324-ec137e4adbc65fb8-28w-28h.png'></image>
+          关注
+        </view>
+      </block> -->
+    </view>
+  </view>
+</template>

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "修改资料",
+    "usingComponents": {
+      "user-btn": "/pages/inc/component/userInfo/userInfo"
+    }
+}
